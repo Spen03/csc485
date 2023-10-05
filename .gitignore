@@ -1,0 +1,10 @@
+/.idea/csc485.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/*
+/csc485/tests/hw11/.pytest_cache/v/cache/lastfailed
+/csc485/tests/hw11/.pytest_cache/v/cache/stepwise
+/csc485/tests/hw10/.pytest_cache/README.md
+/csc485/tests/hw10/.pytest_cache/.gitignore
+/csc485/tests/hw11/.pytest_cache/README.md
