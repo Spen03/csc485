@@ -13,6 +13,8 @@ from csc485.projects.hw12.compute_complexity import compute_complexity
 >>>lists and tuples with good strings inside
 
 """
+
+
 @pytest.mark.parametrize('character', [
     '~',
     '@',
@@ -68,11 +70,12 @@ def test_bad_input(excluded):
     # execute
     assert compute_complexity(excluded) == 0
 
+    # [1, 2, 3], #assertion
+    # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
+    # {'~'}, same with this
+    # (1, '~') #this doesn't pass or raise type errors.
 
-    #[1, 2, 3], #assertion
-    #['~', '#'], #list with good characters #does not raise error, is it good?#its good
-    #{'~'}, same with this
-    #(1, '~') #this doesn't pass or raise type errors.
+
 def test_bad_input_int():
     # [1, 2, 3], #assertion
     # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
@@ -82,8 +85,6 @@ def test_bad_input_int():
         assert compute_complexity(1)
 
 
-
 def test_bad_input_list_of_int():
-
     with pytest.raises(AssertionError):
         assert compute_complexity([1, 2, 3])
