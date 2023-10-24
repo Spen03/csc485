@@ -2,17 +2,19 @@ import pytest
 from csc485.projects.hw12.compute_complexity import compute_complexity
 
 """
->test that the expected inputs return 100
+>hw14 that the expected inputs return 100
 
->test that inputs not listed return 0
+>hw14 that inputs not listed return 0
 
->test that combinations of good and bad return 100
+>hw14 that combinations of good and bad return 100
 
->test other datatypes return type errors:
+>hw14 other datatypes return type errors:
 >>integers, lists, tuples
 >>>lists and tuples with good strings inside
 
 """
+
+
 @pytest.mark.parametrize('character', [
     '~',
     '@',
@@ -68,11 +70,12 @@ def test_bad_input(excluded):
     # execute
     assert compute_complexity(excluded) == 0
 
+    # [1, 2, 3], #assertion
+    # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
+    # {'~'}, same with this
+    # (1, '~') #this doesn't pass or raise type errors.
 
-    #[1, 2, 3], #assertion
-    #['~', '#'], #list with good characters #does not raise error, is it good?#its good
-    #{'~'}, same with this
-    #(1, '~') #this doesn't pass or raise type errors.
+
 def test_bad_input_int():
     # [1, 2, 3], #assertion
     # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
@@ -82,8 +85,6 @@ def test_bad_input_int():
         assert compute_complexity(1)
 
 
-
 def test_bad_input_list_of_int():
-
     with pytest.raises(AssertionError):
         assert compute_complexity([1, 2, 3])
