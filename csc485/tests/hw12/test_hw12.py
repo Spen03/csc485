@@ -2,13 +2,13 @@ import pytest
 from csc485.projects.hw12.compute_complexity import compute_complexity
 
 """
->test that the expected inputs return 100
+>hw14 that the expected inputs return 100
 
->test that inputs not listed return 0
+>hw14 that inputs not listed return 0
 
->test that combinations of good and bad return 100
+>hw14 that combinations of good and bad return 100
 
->test other datatypes return type errors:
+>hw14 other datatypes return type errors:
 >>integers, lists, tuples
 >>>lists and tuples with good strings inside
 
