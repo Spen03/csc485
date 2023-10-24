@@ -4,11 +4,11 @@ import pytest
 """
 copy the tests from hw12 over to cover compute_complexity
 
-test if evaluate strength returns an expected value, true or false
+hw14 if evaluate strength returns an expected value, true or false
 >parameterize a dictionary with passwords and expected values.
->I decided that I would not exhaustively test the happy path
+>I decided that I would not exhaustively hw14 the happy path
 
-test if incorrect input types return a type error
+hw14 if incorrect input types return a type error
 >Strangely, lists would give me an unexpected TypeError
 -that would crash instead of
 -passing, which was what I was looking for. Very strange.
