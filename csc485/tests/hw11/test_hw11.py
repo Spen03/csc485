@@ -1,4 +1,4 @@
-# from csc485.data.fruit import fruit_dict
+#from csc485.data.fruit import fruit_dict
 import pytest
 
 from csc485.projects.hw11.get_fruit_name import get_formal_name
@@ -6,13 +6,13 @@ from csc485.projects.hw11.get_fruit_name import get_formal_name
 # from csc485.projects.hw10.fruit_query import is_it_a_fruit
 
 # from csc485.projects.hw11.get_fruit_name_v2 import get_formal_name_v2
-# can't seem to import the new file for testing. Maybe I should make a new test module?
+# can't seem to import the new file for testing. Maybe I should make a new hw14 module?
 
 """
-test that when the function recieves a key it knows,
+hw14 that when the function recieves a key it knows,
 it will return the correctly associated value
 
-test that if it recieves an unknown key that it will return a key error
+hw14 that if it recieves an unknown key that it will return a key error
 these keys include:
 >strings
 >ints 
@@ -87,8 +87,7 @@ class TestUnhappyPath(object):
         [1, 2, 3, 'bingus'],
     ])
     def test_type_error(self, type_probs):
-        # assert not get_formal_name('bingus')
-        # returns KeyError
+        # assert not get_formal_name('bingus') #returns KeyError
         # assert not isinstance(get_formal_name("bingus"), str)
         with pytest.raises(TypeError):
             assert get_formal_name(type_probs)
