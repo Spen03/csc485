@@ -1,8 +1,9 @@
 import pytest
 from csc485.projects.hw10.fruit_query import is_it_a_fruit
 
-# test if it returns true or false for different inputs
-
+"""
+hw14 if it returns true or false for different inputs
+"""
 
 """
 class TestHappyPath(object):
@@ -21,8 +22,6 @@ class TestHappyPath(object):
 
 
 # this runs through the keys______________________________
-
-
 @pytest.mark.parametrize('key', [
     'apple', 'pear', 'banana', 'grape'
 ])
