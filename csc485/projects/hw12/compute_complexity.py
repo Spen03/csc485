@@ -19,3 +19,6 @@ def compute_complexity(data):
     complexity = (num_complexifiers * 100) / length_of_data
 
     return complexity
+
+
+print(compute_complexity("~@#"))
