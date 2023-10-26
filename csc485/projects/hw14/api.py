@@ -1,5 +1,8 @@
 from flask import Flask, request, jsonify
-from csc485.projects.hw14.password_utilities import evaluate_strength
+if __name__ == '__main__':
+    from password_utilities import evaluate_strength
+else:
+    from csc485.projects.hw14.password_utilities import evaluate_strength
 app = Flask(__name__)
 
 """
