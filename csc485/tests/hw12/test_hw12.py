@@ -28,27 +28,27 @@ from csc485.projects.hw12.compute_complexity import compute_complexity
     '+',
     '=',
     ['~', '#'],
-    {'~'},
-    (1, '~')
+    {'~'}
+    # (1, '~')
 
 ])
-def test_expected_char(character):
+def test_expected_char_single(character):
     # setup
-    # disambiguate
+    # 100 is expected value for single characters
     # execute
-    assert compute_complexity(character) > 0
+    assert compute_complexity(character) == 100
 
 
 class TestMultipleArgs(object):
 
-    def test_multiple_expected_char(self):
-        assert compute_complexity('~@#')
+    def test_multiple_special_char(self):
+        assert compute_complexity('~@#') == 100
 
-    def test_good_and_bad(self):
-        assert compute_complexity('~a')
+    def test_special_char_and_special_char(self):
+        assert compute_complexity('~a') == 100
 
-    def test_bad_and_good(self):
-        assert compute_complexity('a~')
+    def test_unspecial_char_and_special_char(self):
+        assert compute_complexity('a~') == 100
 
 
 @pytest.mark.parametrize('excluded', [
@@ -64,9 +64,9 @@ class TestMultipleArgs(object):
     'A',
     ')'
 ])
-def test_bad_input(excluded):
+def test_unspecial_char(excluded):
     # setup
-    # disambiguate
+    # 0 is expected because there isn't a special character
     # execute
     assert compute_complexity(excluded) == 0
 
@@ -76,7 +76,7 @@ def test_bad_input(excluded):
     # (1, '~') #this doesn't pass or raise type errors.
 
 
-def test_bad_input_int():
+def test_incorrect_input_type_int():
     # [1, 2, 3], #assertion
     # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
     # {'~'}, same with this
@@ -85,6 +85,35 @@ def test_bad_input_int():
         assert compute_complexity(1)
 
 
-def test_bad_input_list_of_int():
+def test_incorrect_assertion_list_of_int():
     with pytest.raises(AssertionError):
         assert compute_complexity([1, 2, 3])
+
+
+@pytest.mark.parametrize('passwords', [
+    'bingus~',
+    'abc~@#',
+    'password123',
+    'password@#$',
+    'p@$$w0rD',
+    '@lfr3dTh3Buttl3r',
+    'gr1mace$h@k3',
+    '~!@#$%^&*()',
+])
+def test_double_check_logic(passwords):
+    """
+    same code from compute complexity. This double-checks the logic,
+    making sure the function gives us the values we expect
+    """
+    complexifiers = ['~', '@', '#', '$', '%', '^', '&', '-', '_', '+', '=']
+    num_complexifiers = 0
+
+    for char in passwords:
+        if char in complexifiers:
+            num_complexifiers = num_complexifiers + 1
+
+    # compute the complexity
+    length_of_data = len(passwords)
+    complexity = (num_complexifiers * 100) / length_of_data
+
+    assert compute_complexity(passwords) == complexity
