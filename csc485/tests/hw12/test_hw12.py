@@ -79,7 +79,7 @@ def test_unspecial_char(excluded):
 def test_incorrect_input_type_int():
     # [1, 2, 3], #assertion
     # ['~', '#'], #list with good characters #does not raise error, is it good?#its good
-    # {'~'}, same with this
+    # {'~'}, #same with this
     # (1, '~') #this too.
     with pytest.raises(TypeError):
         assert compute_complexity(1)
@@ -91,14 +91,20 @@ def test_incorrect_assertion_list_of_int():
 
 
 @pytest.mark.parametrize('passwords', [
-    'bingus~',
-    'abc~@#',
+    ('bingus~', 14.285714285714286),
+    ('abc~@#', 50),
     'password123',
     'password@#$',
     'p@$$w0rD',
     '@lfr3dTh3Buttl3r',
     'gr1mace$h@k3',
     '~!@#$%^&*()',
+    # make tuples of the password and their expected values
+    # systematically include all of the complexifiers into your password
+    # iterate through them
+    # test even number and odd number passwords ie abc, abcd
+    # equivalence class partitioning
+
 ])
 def test_double_check_logic(passwords):
     """
