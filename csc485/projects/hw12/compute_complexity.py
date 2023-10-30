@@ -21,4 +21,4 @@ def compute_complexity(data):
     return complexity
 
 
-print(compute_complexity("~@#"))
+
