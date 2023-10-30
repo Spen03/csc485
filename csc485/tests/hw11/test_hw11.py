@@ -1,25 +1,13 @@
-# from csc485.data.fruit import fruit_dict
 import pytest
-
 from csc485.projects.hw11.get_fruit_name import get_formal_name
 
-# from csc485.projects.hw10.fruit_query import is_it_a_fruit
-# from csc485.projects.hw11.get_fruit_name_v2 import get_formal_name_v2
-# can't seem to import the new file for testing. Maybe I should make a new hw14 module?
-
 """
-hw14 that when the function recieves a key it knows,
-it will return the correctly associated value
-
-hw14 that if it recieves an unknown key that it will return a key error
-these keys include:
->strings
->ints
->incorrectly formated strings
->more than one argument
->no argument
->lists
+* Test that appended keys yield the correct response
+** Strings that are in the dictionary of fruits
+* Test that non-appended keys will yield a type or a key error 
+** integers, mistakes in strings, bools, lists, and tuples
 (could have tested methods but thought it unnecessary)
+
 """
 
 
@@ -69,19 +57,13 @@ class TestUnhappyPath(object):
         'appple',
         1,
         # [1, 2, 3, 'bingus'],
-        True
+        True,
+        ('apple', 2)
     ])
     def test_key_error(self, key_probs):
         # assert not get_formal_name('bingus') #returns KeyError
         # assert not isinstance(get_formal_name("bingus"), str)
         with pytest.raises(KeyError):
-            """
-            assert get_formal_name('bingus')
-            assert get_formal_name(1)
-            assert get_formal_name([1,2,3,'bingus'])
-            assert get_formal_name((1,2,3))
-            assert get_formal_name(true)
-            """
             assert get_formal_name(key_probs)
 
     @pytest.mark.parametrize('type_probs', [
