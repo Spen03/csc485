@@ -2,16 +2,15 @@ import pytest
 from csc485.projects.hw12.compute_complexity import compute_complexity
 
 """
->hw14 that the expected inputs return 100
+*expected inputs return 100
+*inputs not listed return 0
 
->hw14 that inputs not listed return 0
+*hw14 other datatypes return type errors:
+**integers, lists, tuples
+***lists and tuples with good strings inside
 
->hw14 that combinations of good and bad return 100
-
->hw14 other datatypes return type errors:
->>integers, lists, tuples
->>>lists and tuples with good strings inside
-
+*test that iterations of a string with more and more-
+-complexifiers returns accurate scores
 """
 
 
@@ -45,10 +44,10 @@ class TestMultipleArgs(object):
         assert compute_complexity('~@#') == 100
 
     def test_special_char_and_special_char(self):
-        assert compute_complexity('~a') == 100
+        assert compute_complexity('~a') == 50
 
     def test_unspecial_char_and_special_char(self):
-        assert compute_complexity('a~') == 100
+        assert compute_complexity('a~') == 50
 
 
 @pytest.mark.parametrize('excluded', [
@@ -91,14 +90,15 @@ def test_incorrect_assertion_list_of_int():
 
 
 @pytest.mark.parametrize('passwords', [
-    ('bingus~', 14.285714285714286),
-    ('abc~@#', 50),
-    'password123',
-    'password@#$',
-    'p@$$w0rD',
-    '@lfr3dTh3Buttl3r',
-    'gr1mace$h@k3',
-    '~!@#$%^&*()',
+    ('password', 0),
+    ('#assword', 12.5),
+    ('##ssword', 25),
+    ('###sword', 37.5),
+    ('####word', 50),
+    ('#####ord', 62.5),
+    ('######rd', 75),
+    ('#######d', 87.5),
+    ('########', 100)
     # make tuples of the password and their expected values
     # systematically include all of the complexifiers into your password
     # iterate through them
@@ -107,19 +107,5 @@ def test_incorrect_assertion_list_of_int():
 
 ])
 def test_double_check_logic(passwords):
-    """
-    same code from compute complexity. This double-checks the logic,
-    making sure the function gives us the values we expect
-    """
-    complexifiers = ['~', '@', '#', '$', '%', '^', '&', '-', '_', '+', '=']
-    num_complexifiers = 0
-
-    for char in passwords:
-        if char in complexifiers:
-            num_complexifiers = num_complexifiers + 1
-
-    # compute the complexity
-    length_of_data = len(passwords)
-    complexity = (num_complexifiers * 100) / length_of_data
-
-    assert compute_complexity(passwords) == complexity
+    input_password, output_result = passwords
+    assert compute_complexity(input_password) == output_result
