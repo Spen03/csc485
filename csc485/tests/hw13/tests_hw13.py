@@ -2,16 +2,15 @@ from csc485.projects.hw13.homework13 import evaluate_strength
 import pytest
 
 """
-copy the tests from hw12 over to cover compute_complexity
+* didn't extensively test happy path
 
-hw14 if evaluate strength returns an expected value, true or false
->parameterize a dictionary with passwords and expected values.
->I decided that I would not exhaustively hw14 the happy path
+* dict(password : value) 
+50, 49, 48...0 False
+51, 52, 53...100 True
 
-hw14 if incorrect input types return a type error
->Strangely, lists would give me an unexpected TypeError
--that would crash instead of
--passing, which was what I was looking for. Very strange.
+* incorrect input type = type error
+
+* lists = TypeError (not passed by pytest)
 """
 
 
@@ -38,3 +37,17 @@ def test_unhappy_password():
 def test_bad_type(bad_type):
     with pytest.raises(TypeError):
         assert evaluate_strength(bad_type)
+
+
+@pytest.mark.parametrize('complexity_password', {
+    (('x' * 100 + '@' * 0), False),
+    (('x' * 99 + '@' * 1), False),
+    (('x' * 51 + '@' * 49), False),
+    (('x' * 50 + '@' * 50), False),
+    (('x' * 49 + '@' * 51), True),
+    (('x' * 1 + '@' * 99), True),
+    (('x' * 0 + '@' * 100), True)
+})
+def test_response_range(complexity_password):
+    feed_string, score = complexity_password
+    assert evaluate_strength(feed_string) == score
