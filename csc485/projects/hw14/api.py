@@ -11,17 +11,17 @@ assignment run the following:
 >>> python api.py
 
 To call the API, make an http request like the following:
->>> http://127.0.0.1:5000/get_strength?password=example 
+>>> http://127.0.0.1:5000/get_strength?password=example
 
 This api will return a json payload like the following:
-{'password': 'example', 'strength': 'bad'} 
+{'password': 'example', 'strength': 'bad'}
 
 To see this json, you will have to actually get the json. The commands look like this:
 >>> res = requests.get(f"{url}/get_strength?password=example")
 >>> res
 <Response [200]>
 >>> res.json()
-{'password': 'example', 'strength': 'bad'} 
+{'password': 'example', 'strength': 'bad'}
 
 """
 
