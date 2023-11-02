@@ -4,7 +4,7 @@ from csc485.projects.hw11.get_fruit_name import get_formal_name
 """
 * Test that appended keys yield the correct response
 ** Strings that are in the dictionary of fruits
-* Test that non-appended keys will yield a type or a key error 
+* Test that non-appended keys will yield a type or a key error
 ** integers, mistakes in strings, bools, lists, and tuples
 (could have tested methods but thought it unnecessary)
 
