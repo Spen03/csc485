@@ -4,7 +4,7 @@ import pytest
 """
 * didn't extensively test happy path
 
-* dict(password : value) 
+* dict(password : value)
 50, 49, 48...0 False
 51, 52, 53...100 True
 
