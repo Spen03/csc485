@@ -1,10 +1,9 @@
 import pytest
 
-from csc485.projects.hw11.get_fruit_name import get_formal_name
-#from csc485.projects.hw11.get_fruit_name_v2 import get_formal_name_v2
+# from csc485.projects.hw11.get_fruit_name import get_formal_name
+from csc485.projects.hw11.get_fruit_name_v2 import get_formal_name_v2
 
-
-#can't seem to import the new file for testing. Maybe I should make a new test module?
+# can't seem to import the new file for testing. Maybe I should make a new test module?
 
 """
 test that when the function recieves a key it knows,
@@ -51,9 +50,10 @@ class TestHappyPath(object):
         this_key, expected_value = good_key
 
         # execute
-        #assert isinstance(get_formal_name(this_key), str)#pass if it returns string. error will be key error
-        #change structure of paramaterization list so that the value it returns is correct
-        assert get_formal_name(this_key) == expected_value
+        # assert isinstance(get_formal_name(this_key), str)#pass if it returns string. error will be key error
+        # change structure of paramaterization list so that the value it returns is correct
+        assert get_formal_name_v2(this_key) == expected_value
+
 
 class TestUnhappyPath(object):
 
@@ -64,16 +64,14 @@ class TestUnhappyPath(object):
         'apple ',
         'appple',
         1,
-        #[1, 2, 3, 'bingus'],
+        # [1, 2, 3, 'bingus'],
         True
-        ])
-
+    ])
     def test_key_error(self, key_probs):
-        #assert not get_formal_name('bingus') #returns KeyError
-        #assert not isinstance(get_formal_name("bingus"), str)
+        # assert not get_formal_name('bingus') #returns KeyError
+        # assert not isinstance(get_formal_name("bingus"), str)
         with pytest.raises(KeyError):
-            assert get_formal_name(key_probs)
-
+            assert get_formal_name_v2(key_probs)
 
     @pytest.mark.parametrize('type_probs', [
         [1, 2, 3, 'bingus'],
@@ -82,13 +80,12 @@ class TestUnhappyPath(object):
         # assert not get_formal_name('bingus') #returns KeyError
         # assert not isinstance(get_formal_name("bingus"), str)
         with pytest.raises(TypeError):
-            assert get_formal_name(type_probs)
+            assert get_formal_name_v2(type_probs)
 
     def test_no_args(self):
         with pytest.raises(TypeError):
-            get_formal_name()
-
+            get_formal_name_v2()
 
     def test_double_args(self):
         with pytest.raises(TypeError):
-            get_formal_name('apple', 'apple')
+            get_formal_name_v2('apple', 'apple')
