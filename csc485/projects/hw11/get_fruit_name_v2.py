@@ -1,4 +1,4 @@
-from csc485.projects.hw10.fruit_query_v2 import is_it_a_fruit
+from csc485.projects.hw11.get_fruit_name import get_formal_name
 
 def get_formal_name_v2(fruit):
     """
