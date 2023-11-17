@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
@@ -43,7 +43,7 @@ jobs:
         # Note: the following commands have three entirely different instances
         # of the "-m" flag. These are positionally required!
         echo "[pwd]: ${PWD}"
-        export PYTHONPATH=$PWD/suny485
+        export PYTHONPATH=$PWD/csc485
         echo "[pythonpath]: ${PYTHONPATH}"
         echo "!! run pytest and exclude any live API tests !!"
         coverage run -m pytest -m 'not live_api' --tb=short
